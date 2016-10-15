@@ -1,0 +1,2 @@
+defmodule Arangoex do
+end
