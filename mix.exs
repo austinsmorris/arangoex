@@ -47,7 +47,7 @@ defmodule Arangoex.Mixfile do
 
   defp package do
     [
-      files: ["config", "lib", "test", ".gitignore", "LICENSE*", "mix.exs", "README*"],
+      files: ["config", "lib", "test", ".gitignore", ".travis.yml", "LICENSE*", "mix.exs", "README*"],
       maintainers: ["Austin S. Morris"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/austinsmorris/arangoex"},
