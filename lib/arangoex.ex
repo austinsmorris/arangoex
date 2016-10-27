@@ -20,19 +20,23 @@ defmodule Arangoex do
   end
 
   def get(url, headers \\ [], options \\ []) do
-    request(:get, url, "", get_headers(headers), options) |> Response.convert_response()
+    response = request(:get, url, "", get_headers(headers), options)
+    response |> Response.convert_response()
   end
 
   def head(url, headers \\ [], options \\ []) do
-    request(:head, url, "", get_headers(headers), options) |> Response.convert_response()
+    response = request(:head, url, "", get_headers(headers), options)
+    response |> Response.convert_response()
   end
 
   def post(url, body, headers \\ [], options \\ []) do
-    request(:post, url, body, get_headers(headers), options) |> Response.convert_response()
+    response = request(:post, url, body, get_headers(headers), options)
+    response |> Response.convert_response()
   end
 
   def put(url, body \\ "", headers \\ [], options \\ []) do
-    request(:put, url, body, get_headers(headers), options) |> Response.convert_response()
+    response = request(:put, url, body, get_headers(headers), options)
+    response |> Response.convert_response()
   end
 
   defp get_headers(headers) do
