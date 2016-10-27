@@ -15,7 +15,7 @@ defmodule Arangoex do
     Application.get_env(:arangoex, :password, Keyword.fetch!(@default_opts, :password))
   )
 
-  def add_base_url(url, opts) do
+  def add_base_url(url, _opts) do
     @base_url <> url
   end
 
@@ -40,7 +40,7 @@ defmodule Arangoex do
   end
 
   defp get_headers(headers) do
-    headers = headers ++ [{"Accept", "application/json"}, {"Authorization", "Basic " <> @authorization}]
+    headers = headers ++ [{"Accept", "application/json"}, {"Authorization", @authorization}]
     Enum.dedup_by(headers, fn({header, _value}) -> header end)
   end
 end
