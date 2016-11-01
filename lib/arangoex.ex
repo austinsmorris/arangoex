@@ -15,8 +15,13 @@ defmodule Arangoex do
     Application.get_env(:arangoex, :password, Keyword.fetch!(@default_opts, :password))
   )
 
-  def add_base_url(url, _opts) do
-    @base_url <> url
+  def add_base_url(url) do
+    [@base_url, url]
+  end
+
+  def delete(url, headers \\ [], options \\ []) do
+    response = request(:delete, url, "", get_headers(headers), options)
+    response |> Response.convert_response()
   end
 
   def get(url, headers \\ [], options \\ []) do
