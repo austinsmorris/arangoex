@@ -1,5 +1,7 @@
 # Arangoex
 
+[![Build Status](https://travis-ci.org/austinsmorris/arangoex.svg?branch=master)](https://travis-ci.org/austinsmorris/arangoex)
+
 **TODO: Add description**
 
 ## Installation
