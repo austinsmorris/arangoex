@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/austinsmorris/arangoex.svg?branch=master)](https://travis-ci.org/austinsmorris/arangoex)
 
-**TODO: Add description**
+An elixir driver for ArangoDB.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The package can be installed from [Hex](https://hex.pm/packages/arangoex):
 
   1. Add `arangoex` to your list of dependencies in `mix.exs`:
 
