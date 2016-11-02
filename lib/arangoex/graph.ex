@@ -71,6 +71,6 @@ defmodule Arangoex.Graph do
   end
 
   defp build_url(url_part) do
-    IO.inspect [Arangoex.add_base_url(@base_url), "/", url_part]
+    [Arangoex.add_base_url(@base_url), "/", url_part]
   end
 end
