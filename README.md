@@ -12,7 +12,7 @@ The package can be installed from [Hex](https://hex.pm/packages/arangoex):
 
     ```elixir
     def deps do
-      [{:arangoex, "~> 0.1.0"}]
+      [{:arangoex, "~> 0.0.1"}]
     end
     ```
 
