@@ -34,6 +34,11 @@ defmodule Arangoex do
     response |> Response.convert_response()
   end
 
+  def patch(url, body, headers \\ [], options \\ []) do
+    response = request(:patch, url, body, get_headers(headers), options)
+    response |> Response.convert_response()
+  end
+
   def post(url, body, headers \\ [], options \\ []) do
     response = request(:post, url, body, get_headers(headers), options)
     response |> Response.convert_response()
