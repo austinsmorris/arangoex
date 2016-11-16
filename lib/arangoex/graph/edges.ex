@@ -10,7 +10,6 @@ defmodule Arangoex.Graph.Edges do
     [collection, "?", "vertex=", vertex_handle] |> build_url() |> Arangoex.get()
   end
 
-  defp build_url(url_part) do
-    [Arangoex.add_base_url(@base_url), "/", url_part]
-  end
+  defp build_url([]), do: [Arangoex.add_base_url(@base_url)]
+  defp build_url(url_part), do: [Arangoex.add_base_url(@base_url), "/", url_part]
 end
