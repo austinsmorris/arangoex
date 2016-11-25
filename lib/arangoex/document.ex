@@ -70,7 +70,7 @@ defmodule Arangoex.Document do
   # Update the document identified by document-handle.
   def update() do
     # todo - implement
-    # todo - implement keepNull, mergeObjects, waitForSync, ignoreRevs, returnOld, returnNew, and silent query parameters
+    # todo - implement keepNull, mergeObjects, waitForSync, ignoreRevs, returnOld, returnNew, & silent query parameters
     # todo - implement If-Match header
   end
 
