@@ -65,6 +65,7 @@ defmodule Arangoex.Collection do
   # DELETE /_api/collection/{collection-name}
   # Remove the collection identified by collection-name from the database.
   def remove(collection_name) do
+    # todo - implement isSystem query parameter
     collection_name |> build_url() |> Arangoex.delete()
   end
 
