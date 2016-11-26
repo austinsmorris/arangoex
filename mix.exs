@@ -4,7 +4,7 @@ defmodule Arangoex.Mixfile do
   def project do
     [
       app: :arangoex,
-      version: "0.0.7",
+      version: "0.0.8",
       elixir: "~> 1.3",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
