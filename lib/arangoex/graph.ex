@@ -3,7 +3,7 @@ defmodule Arangoex.Graph do
 
   alias Arangoex.JSON
 
-  @base_url "/_api/gharial"
+  @base_url ["/", "_api", "/", "gharial"]
 
   # POST /_api/gharial/{graph-name}/edge
   # Add an edge definition to the graph identified by graph-name.

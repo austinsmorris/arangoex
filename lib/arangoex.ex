@@ -7,15 +7,18 @@ defmodule Arangoex do
 
   @default_opts [host: "http://localhost:8529", database: "_system", username: "root", password: ""]
 
-  @base_url Application.get_env(:arangoex, :host, Keyword.fetch!(@default_opts, :host)) <>
-    "/_db/" <> Application.get_env(:arangoex, :database, Keyword.fetch!(@default_opts, :database))
+  @base_url [
+    Application.get_env(:arangoex, :host, Keyword.fetch!(@default_opts, :host)),
+    "/", "_db", "/",
+    Application.get_env(:arangoex, :database, Keyword.fetch!(@default_opts, :database))
+  ]
 
   @authorization "Basic " <> Base.encode64(
     Application.get_env(:arangoex, :username, Keyword.fetch!(@default_opts, :username)) <> ":" <>
     Application.get_env(:arangoex, :password, Keyword.fetch!(@default_opts, :password))
   )
 
-  def add_base_url(url) do
+  def add_base_url(url) when is_list(url) do
     [@base_url, url]
   end
 

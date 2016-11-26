@@ -3,7 +3,7 @@ defmodule Arangoex.Transaction do
 
   alias Arangoex.JSON
 
-  @base_url "/_api/transaction"
+  @base_url ["/", "_api", "/", "transaction"]
 
   # POST /_api/transaction
   # Execute a transaction.

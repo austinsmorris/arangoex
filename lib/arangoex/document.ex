@@ -4,7 +4,7 @@ defmodule Arangoex.Document do
   alias Arangoex.JSON
   alias Arangoex.Simple
 
-  @base_url "/_api/document"
+  @base_url ["/", "_api", "/", "document"]
 
   # POST /_api/document/{collection}
   # Create a new document.

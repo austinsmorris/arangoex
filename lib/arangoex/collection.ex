@@ -3,7 +3,7 @@ defmodule Arangoex.Collection do
 
   alias Arangoex.JSON
 
-  @base_url "/_api/collection"
+  @base_url ["/", "_api", "/", "collection"]
 
   # POST /_api/collection
   # Create a new collection.

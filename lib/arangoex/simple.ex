@@ -3,7 +3,7 @@ defmodule Arangoex.Simple do
 
   alias Arangoex.JSON
 
-  @base_url "/_api/simple"
+  @base_url ["/", "_api", "/", "simple"]
 
   # todo or not (deprecated):
   # PUT /_api/simple/fulltext
