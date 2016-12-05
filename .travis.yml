@@ -2,9 +2,21 @@ language: elixir
 
 elixir:
   - 1.3
+
 otp_release:
   - 19.0
+
+env:
+  - ARANGODB_VERSION=3.0 ARANGO_VERSION=30000
+  - ARANGODB_VERSION=3.1 ARANGO_VERSION=30100
+  - ARANGODB_VERSION=devel ARANGO_VERSION=30200
+
+before_install:
+  - curl https://www.arangodb.com/repositories/travisCI/setup_arangodb_${ARANGODB_VERSION}.sh | bash
 
 script:
   - mix credo --strict
   - mix test
+
+after_script:
+  - kill -9 $(pgrep arangod)
