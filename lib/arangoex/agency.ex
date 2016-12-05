@@ -5,4 +5,5 @@ defmodule Arangoex.Agency do
   # GET /read
   # GET /write
 
+  # todo - implement - insufficient documentation
 end
