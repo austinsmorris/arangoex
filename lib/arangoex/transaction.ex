@@ -3,15 +3,15 @@ defmodule Arangoex.Transaction do
 
   alias Arangoex.JSON
 
-  @base_url ["/", "_api", "/", "transaction"]
+  use Arangoex, base_url: ["/", "_api", "/", "transaction"]
 
   # POST /_api/transaction
   # Execute a transaction.
-  def execute(%{} = transaction) do
+  def execute(%{} = transaction, headers \\ [], opts \\ []) do
     {:ok, body} = JSON.encode(transaction)
-    [] |> build_url() |> Arangoex.post(body)
-  end
 
-  defp build_url([]), do: [Arangoex.add_base_url(@base_url)]
-  defp build_url(url_part), do: [Arangoex.add_base_url(@base_url), "/", url_part]
+    []
+      |> build_url(opts)
+      |> Arangoex.post(body, headers, opts)
+  end
 end
