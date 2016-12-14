@@ -16,11 +16,20 @@ The package can be installed from [Hex](https://hex.pm/packages/arangoex):
     end
     ```
 
-  2. Ensure `arangoex` is started before your application:
+  2. Configure `arangoex` for your specific environment:
+
+    ```elixir
+    config :arangoex,
+      host: "http://localhost:8529",
+      database: "myDatabase",
+      username: "myUsername",
+      password: "myPassword"
+    ```
+
+  3. Ensure `arangoex` is started before your application:
 
     ```elixir
     def application do
       [applications: [:arangoex]]
     end
     ```
-
