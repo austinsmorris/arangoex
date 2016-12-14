@@ -2,8 +2,13 @@ defmodule ArangoexTest do
   use ExUnit.Case
   doctest Arangoex
 
-  test "add_base_url builds the proper request url" do
-    url = Arangoex.add_base_url(["/", "foo"])
-    assert url == [["http://localhost:8529", "/", "_db", "/", "test"], ["/", "foo"]]
+  test "get_base_url for default database" do
+    url = Arangoex.get_base_url()
+    assert url == ["http://localhost:8529", "/", "_db", "/", "test"]
+  end
+
+  test "get_base_url for given database" do
+    url = Arangoex.get_base_url(database: "foo")
+    assert url == ["http://localhost:8529", "/", "_db", "/", "foo"]
   end
 end
