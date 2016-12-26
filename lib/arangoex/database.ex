@@ -7,43 +7,43 @@ defmodule Arangoex.Database do
 
   # POST /_api/database
   # Create a new database.
-  def create(%{} = database, headers \\ [], opts \\ []) do
+  def create(%{} = database, opts \\ []) do
     {:ok, body} = JSON.encode(database)
 
     []
       |> build_url(Keyword.put_new(opts, :database, "_system"))
-      |> Arangoex.post(body, headers, opts)
+      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
   end
 
   # GET /_api/database/current
   # Return information about the current database.
-  def get_current(headers \\ [], opts \\ []) do
+  def get_current(opts \\ []) do
     "current"
       |> build_url(opts)
-      |> Arangoex.get(headers, opts)
+      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
   end
 
   # GET /_api/database
   # Return a list of all databases on the system.
-  def list(headers \\ [], opts \\ []) do
+  def list(opts \\ []) do
     []
       |> build_url(opts)
-      |> Arangoex.get(headers, opts)
+      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
   end
 
   # GET /_api/database/user
   # Return a list of databases for the current user.
-  def list_for_current_user(headers \\ [], opts \\ []) do
+  def list_for_current_user(opts \\ []) do
     "user"
       |> build_url(opts)
-      |> Arangoex.get(headers, opts)
+      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
   end
 
   # DELETE /_api/database/{database-name}
   # Remove the database identified by database-name from the system.
-  def remove(database_name, headers \\ [], opts \\ []) do
+  def remove(database_name, opts \\ []) do
     database_name
       |> build_url(Keyword.put_new(opts, :database, "_system"))
-      |> Arangoex.delete(headers, opts)
+      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
   end
 end

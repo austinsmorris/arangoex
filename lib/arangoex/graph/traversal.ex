@@ -7,11 +7,11 @@ defmodule Arangoex.Graph.Traversal do
 
   # POST /_api/traversal
   # Perform a graph traversal starting from a single vertex.
-  def traverse(%{} = traversal, headers \\ [], opts \\ []) do
+  def traverse(%{} = traversal, opts \\ []) do
     {:ok, body} = JSON.encode(traversal)
 
     []
       |> build_url(opts)
-      |> Arangoex.post(body, headers, opts)
+      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
   end
 end

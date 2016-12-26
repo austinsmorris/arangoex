@@ -7,11 +7,11 @@ defmodule Arangoex.Transaction do
 
   # POST /_api/transaction
   # Execute a transaction.
-  def execute(%{} = transaction, headers \\ [], opts \\ []) do
+  def execute(%{} = transaction, opts \\ []) do
     {:ok, body} = JSON.encode(transaction)
 
     []
       |> build_url(opts)
-      |> Arangoex.post(body, headers, opts)
+      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
   end
 end
