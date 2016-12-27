@@ -10,6 +10,6 @@ defmodule Arangoex.Graph.Edges do
     # todo - direction parameter
     [collection_id, "?", "vertex=", vertex_handle]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 end

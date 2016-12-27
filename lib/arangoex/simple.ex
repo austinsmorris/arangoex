@@ -18,7 +18,7 @@ defmodule Arangoex.Simple do
     {:ok, body} = JSON.encode(%{collection: collection_name, example: example})
 
     "first-example"
-      |> build_url(opts) |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> build_url(opts) |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/any
@@ -28,7 +28,7 @@ defmodule Arangoex.Simple do
 
     "any"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/all
@@ -39,7 +39,7 @@ defmodule Arangoex.Simple do
 
     "all"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/by-example
@@ -50,7 +50,7 @@ defmodule Arangoex.Simple do
 
     "by-example"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/lookup-by-keys
@@ -60,7 +60,7 @@ defmodule Arangoex.Simple do
 
     "lookup-by-keys"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/all-keys
@@ -71,7 +71,7 @@ defmodule Arangoex.Simple do
 
     "all-keys"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/remove-by-example
@@ -82,7 +82,7 @@ defmodule Arangoex.Simple do
 
     "remove-by-example"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/remove-by-keys
@@ -93,7 +93,7 @@ defmodule Arangoex.Simple do
 
     "remove-by-keys"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/replace-by-example
@@ -104,7 +104,7 @@ defmodule Arangoex.Simple do
 
     "replace-by-example"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/simple/update-by-example
@@ -115,6 +115,6 @@ defmodule Arangoex.Simple do
 
     "update-by-example"
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 end

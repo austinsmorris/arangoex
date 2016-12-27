@@ -12,7 +12,7 @@ defmodule Arangoex.Collection do
 
     []
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # GET /_api/collection/{collection-name}
@@ -20,7 +20,7 @@ defmodule Arangoex.Collection do
   def get(collection_name, opts \\ []) do
     collection_name
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection/{collection-name}/checksum
@@ -29,7 +29,7 @@ defmodule Arangoex.Collection do
     # todo - implement withRevisions and withData query parameters
     [collection_name, "/", "checksum"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection/{collection-name}/count
@@ -37,7 +37,7 @@ defmodule Arangoex.Collection do
   def get_count(collection_name, opts \\ []) do
     [collection_name, "/", "count"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection/{collection-name}/figures
@@ -45,7 +45,7 @@ defmodule Arangoex.Collection do
   def get_figures(collection_name, opts \\ []) do
     [collection_name, "/", "figures"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection/{collection-name}/properties
@@ -53,7 +53,7 @@ defmodule Arangoex.Collection do
   def get_properties(collection_name, opts \\ []) do
     [collection_name, "/", "properties"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection/{collection-name}/revision
@@ -61,7 +61,7 @@ defmodule Arangoex.Collection do
   def get_revision(collection_name, opts \\ []) do
     [collection_name, "/", "revision"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/collection
@@ -70,7 +70,7 @@ defmodule Arangoex.Collection do
     # todo - implement excludeSystem query parameter
     []
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # PUT /_api/collection/{collection-name}/load
@@ -78,7 +78,7 @@ defmodule Arangoex.Collection do
   def load(collection_name, opts \\ []) do
     [collection_name, "/", "load"]
       |> build_url(opts)
-      |> Arangoex.put(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(opts)
   end
 
   # DELETE /_api/collection/{collection-name}
@@ -87,7 +87,7 @@ defmodule Arangoex.Collection do
     # todo - implement isSystem query parameter
     collection_name
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # PUT /_api/collection/{collection-name}/rename
@@ -97,7 +97,7 @@ defmodule Arangoex.Collection do
 
     [collection_name, "/", "rename"]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/collection/{collection-name}/rotate
@@ -105,7 +105,7 @@ defmodule Arangoex.Collection do
   def rotate(collection_name, opts \\ []) do
     [collection_name, "/", "rotate"]
       |> build_url(opts)
-      |> Arangoex.put("", Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put("", opts)
   end
 
   # PUT /_api/collection/{collection-name}/properties
@@ -115,7 +115,7 @@ defmodule Arangoex.Collection do
 
     [collection_name, "/", "properties"]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/collection/{collection-name}/truncate
@@ -123,7 +123,7 @@ defmodule Arangoex.Collection do
   def truncate(collection_name, opts \\ []) do
     [collection_name, "/", "truncate"]
       |> build_url(opts)
-      |> Arangoex.put("", Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put("", opts)
   end
 
   # PUT /_api/collection/{collection-name}/unload
@@ -131,6 +131,6 @@ defmodule Arangoex.Collection do
   def unload(collection_name, opts \\ []) do
     [collection_name, "/", "unload"]
       |> build_url(opts)
-      |> Arangoex.put("", Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put("", opts)
   end
 end

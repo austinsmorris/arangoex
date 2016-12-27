@@ -12,7 +12,7 @@ defmodule Arangoex.Database do
 
     []
       |> build_url(Keyword.put_new(opts, :database, "_system"))
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # GET /_api/database/current
@@ -20,7 +20,7 @@ defmodule Arangoex.Database do
   def get_current(opts \\ []) do
     "current"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/database
@@ -28,7 +28,7 @@ defmodule Arangoex.Database do
   def list(opts \\ []) do
     []
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/database/user
@@ -36,7 +36,7 @@ defmodule Arangoex.Database do
   def list_for_current_user(opts \\ []) do
     "user"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # DELETE /_api/database/{database-name}
@@ -44,6 +44,6 @@ defmodule Arangoex.Database do
   def remove(database_name, opts \\ []) do
     database_name
       |> build_url(Keyword.put_new(opts, :database, "_system"))
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 end

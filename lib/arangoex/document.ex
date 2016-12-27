@@ -14,7 +14,7 @@ defmodule Arangoex.Document do
 
     collection
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # GET /_api/document/{document-handle}
@@ -23,7 +23,7 @@ defmodule Arangoex.Document do
     # todo - implement If-None-Match and If-Match headers
     document_handle
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # HEAD /_api/document/{document-handle}
@@ -32,7 +32,7 @@ defmodule Arangoex.Document do
     # todo - implement If-None-Match and If-Match headers
     document_handle
       |> build_url(opts)
-      |> Arangoex.head(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.head(opts)
   end
 
   # proxy to PUT /_api/simple/all
@@ -53,7 +53,7 @@ defmodule Arangoex.Document do
 
     document_handle
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/document/{collection}
@@ -70,7 +70,7 @@ defmodule Arangoex.Document do
     # todo - implement If-Match header
     document_handle
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # DELETE /_api/document/{collection}

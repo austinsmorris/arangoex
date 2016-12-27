@@ -22,34 +22,34 @@ defmodule Arangoex do
     do_get_base_url(database_name)
   end
 
-  def delete(url, headers \\ [], options \\ []) do
-    response = request(:delete, url, "", get_headers(headers), options)
-    response |> Response.convert_response()
+  def delete(url, opts \\ []) do
+    response = request(:delete, url, "", get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
-  def get(url, headers \\ [], options \\ []) do
-    response = request(:get, url, "", get_headers(headers), options)
-    response |> Response.convert_response()
+  def get(url, opts \\ []) do
+    response = request(:get, url, "", get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
-  def head(url, headers \\ [], options \\ []) do
-    response = request(:head, url, "", get_headers(headers), options)
-    response |> Response.convert_response()
+  def head(url, opts \\ []) do
+    response = request(:head, url, "", get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
-  def patch(url, body, headers \\ [], options \\ []) do
-    response = request(:patch, url, body, get_headers(headers), options)
-    response |> Response.convert_response()
+  def patch(url, body, opts \\ []) do
+    response = request(:patch, url, body, get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
-  def post(url, body, headers \\ [], options \\ []) do
-    response = request(:post, url, body, get_headers(headers), options)
-    response |> Response.convert_response()
+  def post(url, body, opts \\ []) do
+    response = request(:post, url, body, get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
-  def put(url, body \\ "", headers \\ [], options \\ []) do
-    response = request(:put, url, body, get_headers(headers), options)
-    response |> Response.convert_response()
+  def put(url, body \\ "", opts \\ []) do
+    response = request(:put, url, body, get_headers(Keyword.get(opts, :headers, [])), opts)
+    Response.convert_response(response)
   end
 
   defp do_get_base_url(nil), do: @base_url

@@ -12,6 +12,6 @@ defmodule Arangoex.Graph.Traversal do
 
     []
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 end

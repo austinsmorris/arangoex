@@ -12,7 +12,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "edge"]
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # POST /_api/gharial/{graph-name}/vertex
@@ -22,7 +22,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "vertex"]
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # POST /_api/gharial
@@ -32,7 +32,7 @@ defmodule Arangoex.Graph do
 
     []
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # POST /_api/gharial/{graph-name}/edge/{collection-name}
@@ -42,7 +42,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "edge", "/", collection_name]
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # POST /_api/gharial/{graph-name}/vertex/{collection-name}
@@ -52,7 +52,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "vertex", "/", collection_name]
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # GET /_api/gharial/{graph-name}
@@ -60,7 +60,7 @@ defmodule Arangoex.Graph do
   def get(graph_name, opts \\ []) do
     graph_name
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/gharial/{graph-name}/edge/{collection-name}/{edge-key}
@@ -68,7 +68,7 @@ defmodule Arangoex.Graph do
   def get_edge(graph_name, document_handle, opts \\ []) do
     [graph_name, "/", "edge", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/gharial/{graph-name}/vertex/{collection-name}/{vertex-key}
@@ -76,7 +76,7 @@ defmodule Arangoex.Graph do
   def get_vertex(graph_name, document_handle, opts \\ []) do
     [graph_name, "/", "vertex", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/gharial
@@ -84,7 +84,7 @@ defmodule Arangoex.Graph do
   def list(opts \\ []) do
     []
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/gharial/{graph-name}/edge
@@ -92,7 +92,7 @@ defmodule Arangoex.Graph do
   def list_edges(graph_name, opts \\ []) do
     [graph_name, "/", "edge"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/gharial/{graph-name}/vertex
@@ -100,7 +100,7 @@ defmodule Arangoex.Graph do
   def list_vertices(graph_name, opts \\ []) do
     [graph_name, "/", "vertex"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # DELETE /_api/gharial/{graph-name}
@@ -109,7 +109,7 @@ defmodule Arangoex.Graph do
     # todo - dropCollections parameter
     graph_name
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # DELETE /_api/gharial/{graph-name}/edge/{document-handle}
@@ -117,7 +117,7 @@ defmodule Arangoex.Graph do
   def remove_edge(graph_name, document_handle, opts \\ []) do
     [graph_name, "/", "edge", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # DELETE /_api/gharial/{graph-name}/edge/{definition-name}
@@ -125,7 +125,7 @@ defmodule Arangoex.Graph do
   def remove_edges(graph_name, definition_name, opts \\ []) do
     [graph_name, "/", "edge", "/", definition_name]
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # DELETE /_api/gharial/{graph-name}/vertex/{collection-name}
@@ -133,7 +133,7 @@ defmodule Arangoex.Graph do
   def remove_vertices(graph_name, collection_name, opts \\ []) do
     [graph_name, "/", "vertex", "/", collection_name]
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # DELETE /_api/gharial/{graph-name}/vertex/{document-handle}
@@ -141,7 +141,7 @@ defmodule Arangoex.Graph do
   def remove_vertex(graph_name, document_handle, opts \\ []) do
     [graph_name, "/", "vertex", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # PUT /_api/gharial/{graph-name}/edge/{document-handle}
@@ -151,7 +151,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "edge", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/gharial/{graph-name}/edge/{definition-name}
@@ -161,7 +161,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "edge", "/", definition_name]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PUT /_api/gharial/{graph-name}/vertex/{document-handle}
@@ -171,7 +171,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "vertex", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # PATCH /_api/gharial/{graph-name}/edge/{document-handle}
@@ -181,7 +181,7 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "edge", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.patch(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.patch(body, opts)
   end
 
   # PATCH /_api/gharial/{graph-name}/vertex/{document-handle}
@@ -191,6 +191,6 @@ defmodule Arangoex.Graph do
 
     [graph_name, "/", "vertex", "/", document_handle]
       |> build_url(opts)
-      |> Arangoex.patch(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.patch(body, opts)
   end
 end

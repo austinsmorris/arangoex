@@ -12,7 +12,7 @@ defmodule Arangoex.Admin do
     {:ok, body} = JSON.encode(task)
 
     [get_base_url(opts), "/", "_api", "/", "tasks"]
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 
   # PUT /_api/tasks/{id}
@@ -21,7 +21,7 @@ defmodule Arangoex.Admin do
     {:ok, body} = JSON.encode(task)
 
     [get_base_url(opts), "/", "_api", "/", "tasks", "/", task_id]
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # POST /_admin/execute
@@ -35,7 +35,7 @@ defmodule Arangoex.Admin do
   def get_echo(opts \\ []) do
     "echo"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/log
@@ -44,7 +44,7 @@ defmodule Arangoex.Admin do
     # todo - implement upto, level, start, size, offset, search, and sort query parameters
     "log"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/log/level
@@ -52,7 +52,7 @@ defmodule Arangoex.Admin do
   def get_log_level(opts \\ []) do
     ["log", "/", "level"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/long_echo
@@ -61,7 +61,7 @@ defmodule Arangoex.Admin do
     # todo - implement inevitable timeout error response
     "long_echo"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/server/id
@@ -69,7 +69,7 @@ defmodule Arangoex.Admin do
   def get_server_id(opts \\ []) do
     ["server", "/", "id"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/server/role
@@ -77,7 +77,7 @@ defmodule Arangoex.Admin do
   def get_server_role(opts \\ []) do
     ["server", "/", "role"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/statistics
@@ -85,7 +85,7 @@ defmodule Arangoex.Admin do
   def get_statistics(opts \\ []) do
     "statistics"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/statistics-description
@@ -93,7 +93,7 @@ defmodule Arangoex.Admin do
   def get_statistics_description(opts \\ []) do
     "statistics-description"
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/time
@@ -101,7 +101,7 @@ defmodule Arangoex.Admin do
   def get_system_time(opts \\ []) do
     ["time"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_admin/database/target-version
@@ -109,34 +109,34 @@ defmodule Arangoex.Admin do
   def get_target_version(opts \\ []) do
     ["database", "/", "target-version"]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/tasks/{id}
   # Return the server task indicated by the task-id.
   def get_task(task_id, opts \\ []) when is_binary(task_id) do
     [get_base_url(opts), "/", "_api", "/", "tasks", "/", task_id]
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # GET /_api/version
   # Return the server version.
   def get_version(opts \\ []) do
     # todo - implement details query parameter
-    Arangoex.get([get_base_url(opts), "/", "_api", "/", "version"], Keyword.get(opts, :headers, []), opts)
+    Arangoex.get([get_base_url(opts), "/", "_api", "/", "version"], opts)
   end
 
   # GET /_api/endpoint
   # Return a list of endpoints configured for the server.
   def list_endpoints(opts \\ []) do
     # todo - must use the system db
-    Arangoex.get([get_base_url(opts), "/", "_api", "/", "endpoints"], Keyword.get(opts, :headers, []), opts)
+    Arangoex.get([get_base_url(opts), "/", "_api", "/", "endpoints"], opts)
   end
 
   # GET /_api/tasks/
   # List all tasks on the server.
   def list_tasks(opts \\ []) do
-    Arangoex.get([get_base_url(opts), "/", "_api" , "/", "tasks"], Keyword.get(opts, :headers, []), opts)
+    Arangoex.get([get_base_url(opts), "/", "_api" , "/", "tasks"], opts)
   end
 
   # POST /_admin/routing/reload
@@ -144,14 +144,14 @@ defmodule Arangoex.Admin do
   def reload_routing(opts \\ []) do
     ["routing", "/", "reload"]
       |> build_url(opts)
-      |> Arangoex.post("", Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post("", opts)
   end
 
   # DELETE /_api/tasks/{id}
   # Remove the task with the given id from the server.
   def remove_task(task_id, opts \\ []) when is_binary(task_id) do
     [get_base_url(opts), "/", "_api", "/", "tasks", "/", task_id]
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # PUT /_admin/log/level
@@ -160,7 +160,7 @@ defmodule Arangoex.Admin do
     {:ok, body} = JSON.encode(levels)
     ["log", "/", "level"]
       |> build_url(opts)
-      |> Arangoex.put(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.put(body, opts)
   end
 
   # DELETE /_admin/shutdown
@@ -168,7 +168,7 @@ defmodule Arangoex.Admin do
   def shutdown(opts \\ []) do
     "shutdown"
       |> build_url(opts)
-      |> Arangoex.delete(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.delete(opts)
   end
 
   # GET /_admin/sleep
@@ -177,12 +177,12 @@ defmodule Arangoex.Admin do
   def sleep(duration, opts) when is_integer(duration) do
     ["sleep", "?", "duration", "=", Integer.to_string(duration)]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
   def sleep(duration, opts) when is_float(duration) do
     ["sleep", "?", "duration", "=", Float.to_string(duration)]
       |> build_url(opts)
-      |> Arangoex.get(Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.get(opts)
   end
 
   # POST /_admin/test
@@ -192,6 +192,6 @@ defmodule Arangoex.Admin do
 
     "test"
       |> build_url(opts)
-      |> Arangoex.post(body, Keyword.get(opts, :headers, []), opts)
+      |> Arangoex.post(body, opts)
   end
 end
