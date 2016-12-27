@@ -64,11 +64,37 @@ defmodule Arangoex do
     quote bind_quoted: [opts: opts] do
       @base_url_part Keyword.get(opts, :base_url, [])
 
-      def build_url(url_part, options \\ [])
-      def build_url([], options), do: do_build_url([], options)
-      def build_url(url_part, options), do: do_build_url(["/", url_part], options)
+      def build_url(url_part, opts \\ [])
+      def build_url([], opts), do: do_build_url([], opts)
+      def build_url(url_part, opts), do: do_build_url(["/", url_part], opts)
 
-      defp do_build_url(url_part, opts), do: [Arangoex.get_base_url(opts), @base_url_part, url_part]
+      defp do_build_query_params(opts) do
+        opts
+          |> Keyword.get(:query_params, [])
+          |> extract_query_params(opts)
+          |> Enum.reduce([], &join_query_params/2)
+          |> finish_query_params()
+      end
+
+      defp do_build_url(url_part, opts) do
+        [Arangoex.get_base_url(opts), @base_url_part, url_part, do_build_query_params(opts)]
+      end
+
+      defp extract_query_params(params, opts) do
+        Enum.map(params, fn(param) ->
+          case Keyword.get(opts, param) do
+            nil -> []
+            value -> [Atom.to_string(param), "=", value]
+          end
+        end)
+      end
+
+      defp finish_query_params([]), do: []
+      defp finish_query_params(params), do: ["?", params]
+
+      defp join_query_params([], acc), do: acc
+      defp join_query_params(param, []), do: param
+      defp join_query_params(param, acc), do: [param, "&", acc]
     end
   end
 end
