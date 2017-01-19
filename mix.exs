@@ -35,7 +35,7 @@ defmodule Arangoex.Mixfile do
     [
       {:credo, "~> 0.4", only: [:dev, :test]},
       {:ex_doc, "~> 0.14", only: :dev},
-      {:httpoison, "~> 0.9.0"},
+      {:httpoison, "~> 0.11.0"},
       {:poison, "~> 2.2 or ~> 3.0"},
     ]
   end
