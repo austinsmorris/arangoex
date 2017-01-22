@@ -1,6 +1,5 @@
 defmodule ArangoexTest do
-  use ExUnit.Case
-  doctest Arangoex
+  use ExUnit.Case, async: true
 
   test "get_base_url for default database" do
     url = Arangoex.get_base_url()

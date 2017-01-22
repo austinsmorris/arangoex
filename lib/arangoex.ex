@@ -64,6 +64,7 @@ defmodule Arangoex do
     quote bind_quoted: [opts: opts] do
       @base_url_part Keyword.get(opts, :base_url, [])
 
+      @doc false
       def build_url(url_part, opts \\ [])
       def build_url([], opts), do: do_build_url([], opts)
       def build_url(url_part, opts), do: do_build_url(["/", url_part], opts)

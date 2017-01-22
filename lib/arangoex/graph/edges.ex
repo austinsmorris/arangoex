@@ -6,15 +6,19 @@ defmodule Arangoex.Graph.Edges do
   use Arangoex, base_url: ["/", "_api", "/", "edges"]
 
   @doc """
-  `GET /_api/edges/{collection-id}`
+  Returns an array of edges in the collection identified by `collection_name` to or from the vertex identified by
+  `vertex_handle`.  If the direction is not specified, `"any"` edges are returned.
 
-  Returns an array of edges in the collection identified by collection_name to or from the vertex identified by
-  vertex_handle.  If the direction is not specified, "any" edges are returned.
+  ## Endpoint
+
+  `GET /_api/edges/{collection-id}`
 
   ## Options
 
     * `:direction` - Filters the resulting edges by the direction to or from the given vertex.  It may be one of
-      `"in"', `"out"`, or `"any"`.
+      `"in"`, `"out"`, or `"any"`.
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
 
   ## Examples
 

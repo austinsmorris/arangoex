@@ -1,7 +1,7 @@
 defmodule Arangoex.JSONTest do
-  use ExUnit.Case
-
   alias Arangoex.JSON
+
+  use ExUnit.Case, async: true
 
   test "decoding valid json string" do
     {:ok, map} = JSON.decode("{\"foo\":\"bar\"}")

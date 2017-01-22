@@ -1,12 +1,31 @@
 defmodule Arangoex.Graph do
-  @moduledoc false
+  @moduledoc """
+  This module contains functions used to manage graph structures, vertex document collections, and
+  edge document collections.
+  """
 
   alias Arangoex.JSON
 
   use Arangoex, base_url: ["/", "_api", "/", "gharial"]
 
-  # POST /_api/gharial/{graph-name}/edge
-  # Add an edge definition to the graph identified by graph-name.
+  @doc """
+  Add an edge definition to the graph identified by graph_name.
+
+  The `edges` parameter is a map containing the edge definition according to the ArangoDB documentation.
+
+  ## Endpoint
+
+  POST /_api/gharial/{graph-name}/edge
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      edge_def = %{collection: "my_edges", from: ["foo", "bar"], to: ["baz"]}
+      {:ok, resp} = Arangoex.Graph.add_edges("my_graph", edge_def)
+  """
   def add_edges(graph_name, edges, opts \\ []) do
     {:ok, body} = JSON.encode(edges)
 
@@ -15,8 +34,25 @@ defmodule Arangoex.Graph do
       |> Arangoex.post(body, opts)
   end
 
-  # POST /_api/gharial/{graph-name}/vertex
-  # Add a vertex collection to the graph identified by graph-name.  Create the collection if it does not exist.
+  @doc """
+  Add a vertex collection to the graph identified by graph_name.  Create the collection if it does not exist.
+
+  The `vertices` parameter is a map containing a `:collection` property with the name of the collection, according
+  to the ArangoDB documentation.
+
+  ## Endpoint
+
+  POST /_api/gharial/{graph-name}/vertex
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, resp} = Arangoex.Graph.add_vertices("my_graph", %{collection: "my_vertices"}
+
+  """
   def add_vertices(graph_name, vertices, opts \\ []) do
     {:ok, body} = JSON.encode(vertices)
 
@@ -25,8 +61,25 @@ defmodule Arangoex.Graph do
       |> Arangoex.post(body, opts)
   end
 
-  # POST /_api/gharial
-  # Create a new graph.
+  @doc """
+  Create a new graph.
+
+  The `graph` parameter is a map containing the graph definition according to the ArangoDB documentation.
+
+  ## Endpoint
+
+  POST /_api/gharial
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      edge_def = %{collection: "my_edges", from: ["my_vertices"], to: ["my_other_vertices"]}
+      graph_def = %{name: "my_graph", edgeDefinitions: [edge_def]}
+      Arangoex.Graph.create(graph_def)
+  """
   def create(graph, opts \\ []) do
     {:ok, body} = JSON.encode(graph)
 
@@ -106,9 +159,10 @@ defmodule Arangoex.Graph do
   # DELETE /_api/gharial/{graph-name}
   # Remove the graph identified by graph-name from the database.
   def remove(graph_name, opts \\ []) do
-    # todo - dropCollections parameter
+    query_params = [:dropCollections]
+
     graph_name
-      |> build_url(opts)
+      |> build_url(Keyword.put_new(opts, :query_params, query_params))
       |> Arangoex.delete(opts)
   end
 

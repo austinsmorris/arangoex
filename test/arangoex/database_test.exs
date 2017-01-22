@@ -2,10 +2,10 @@ defmodule Arangoex.DatabaseTest do
   alias Arangoex.Database
   alias Arangoex.JSON
 
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   test "create() creates a new database" do
-    {:ok, response} =Database.create(%{name: "foo"})
+    {:ok, response} = Database.create(%{name: "foo"})
     body = JSON.decode!(response.body, keys: :atoms)
 
     assert body.code == 201
@@ -17,7 +17,7 @@ defmodule Arangoex.DatabaseTest do
 
     assert Enum.member?(body.result, "foo")
 
-    Database.remove("foo")
+
   end
 
   test "get_current() returns info about current database" do
@@ -44,9 +44,15 @@ defmodule Arangoex.DatabaseTest do
   end
 
 #  test "list_for_current_user()" do
+#    # todo - create the databse for a different user
+#    Database.create(%{name: "foo"})
+#
+#    # todo - list databases for that different user
 #    {:ok, response} = Database.list_for_current_user()
 #    body = JSON.decode!(response.body, keys: :atoms)
 #    IO.inspect body
+#
+#    Database.remove("foo")
 #  end
 
   test "remove() deletes the given database" do

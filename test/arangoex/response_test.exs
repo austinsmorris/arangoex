@@ -1,8 +1,8 @@
 defmodule Arangoex.ResponseTest do
-  use ExUnit.Case
-
   alias Arangoex.Response
   alias HTTPoison.Response, as: HTTPoisonResponse
+
+  use ExUnit.Case, async: true
 
   test "Response struct" do
     response = %Response{}
