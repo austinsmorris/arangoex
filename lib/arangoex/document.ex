@@ -6,6 +6,9 @@ defmodule Arangoex.Document do
 
   use Arangoex, base_url: ["/", "_api", "/", "document"]
 
+  defdelegate list(collection, attrs \\ [], opts \\ []), to: Simple, as: :list_documents
+  defdelegate list_keys(collection, type \\ "path", opts \\ []), to: Simple, as: :list_keys
+
   # POST /_api/document/{collection}
   # Create a new document.
   def create(collection, document, opts \\ []) do
@@ -33,15 +36,6 @@ defmodule Arangoex.Document do
     document_handle
       |> build_url(opts)
       |> Arangoex.head(opts)
-  end
-
-  # proxy to PUT /_api/simple/all
-  def list(collection, opts \\ []), do: Simple.list_documents(collection, opts)
-
-  # proxy to PUT /_api/simple/all-keys
-  # todo - refactor to make type an option parameter
-  def list_keys(collection, type \\ "path", opts \\ []) do
-    Simple.list_keys(collection, type, opts)
   end
 
   # PUT /_api/document/{document-handle}
