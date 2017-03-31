@@ -33,3 +33,10 @@ The package can be installed from [Hex](https://hex.pm/packages/arangoex):
       [applications: [:arangoex]]
     end
     ```
+
+## Running Tests
+
+You can run tests with `mix test`, but you must startup an instance of
+arangodb without authentication. Using
+the [official docker image](https://hub.docker.com/_/arangodb/) is
+recommended.
