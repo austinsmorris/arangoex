@@ -15,7 +15,7 @@ before_install:
   - curl https://www.arangodb.com/repositories/travisCI/setup_arangodb_${ARANGODB_VERSION}.sh | bash
 
 script:
-  - mix credo --strict
+  - MIX_ENV=test mix credo --strict
   - mix test
 
 after_script:
