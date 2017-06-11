@@ -9,8 +9,8 @@ defmodule Arangoex.Simple do
 
   """
 
-  use Arangoex, base_url: ["/", "_api", "/", "simple"]
-  alias Arangoex.{JSON,Response}
+#  use Arangoex, base_url: ["/", "_api", "/", "simple"]
+#  alias Arangoex.{JSON,Response}
 
   @doc """
   Returns the first document in the collection identified by
@@ -40,11 +40,11 @@ defmodule Arangoex.Simple do
   """
   @spec get_first_document_by_example(binary, map, keyword) :: {:ok, Response.t}
   def get_first_document_by_example(collection_name, example, opts \\ []) do
-    {:ok, body} = JSON.encode(%{collection: collection_name, example: example})
-
-    "first-example"
-    |> build_url(opts)
-    |> Arangoex.put(body, opts)
+#    {:ok, body} = JSON.encode(%{collection: collection_name, example: example})
+#
+#    "first-example"
+#    |> build_url(opts)
+#    |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -72,11 +72,11 @@ defmodule Arangoex.Simple do
 
   """
   def get_random_document(collection_name, opts \\ []) do
-    {:ok, body} = JSON.encode(%{collection: collection_name})
-
-    "any"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = JSON.encode(%{collection: collection_name})
+#
+#    "any"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -110,13 +110,13 @@ defmodule Arangoex.Simple do
 
   """
   def list_documents(collection_name, attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name})
-      |> JSON.encode
-
-    "all"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name})
+#      |> JSON.encode
+#
+#    "all"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -153,13 +153,13 @@ defmodule Arangoex.Simple do
 
   """
   def list_documents_by_example(collection_name, example, attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name, example: example})
-      |> JSON.encode
-
-    "by-example"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name, example: example})
+#      |> JSON.encode
+#
+#    "by-example"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -189,11 +189,11 @@ defmodule Arangoex.Simple do
 
   """
   def list_documents_for_keys(collection_name, keys \\ [], opts \\ []) do
-    {:ok, body} = JSON.encode(%{collection: collection_name, keys: keys})
-
-    "lookup-by-keys"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = JSON.encode(%{collection: collection_name, keys: keys})
+#
+#    "lookup-by-keys"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -228,11 +228,11 @@ defmodule Arangoex.Simple do
 
   """
   def list_keys(collection, type \\ "path", opts \\ []) do
-    {:ok, body} = JSON.encode(%{collection: collection, type: type})
-
-    "all-keys"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = JSON.encode(%{collection: collection, type: type})
+#
+#    "all-keys"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -269,13 +269,13 @@ defmodule Arangoex.Simple do
 
   """
   def remove_documents_by_example(collection_name, example, attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name, example: example})
-      |> JSON.encode
-
-    "remove-by-example"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name, example: example})
+#      |> JSON.encode
+#
+#    "remove-by-example"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -315,13 +315,13 @@ defmodule Arangoex.Simple do
 
   """
   def remove_documents_for_keys(collection_name, keys \\ [], attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name, keys: keys})
-      |> JSON.encode
-
-    "remove-by-keys"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name, keys: keys})
+#      |> JSON.encode
+#
+#    "remove-by-keys"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -359,13 +359,13 @@ defmodule Arangoex.Simple do
 
   """
   def replace_documents_by_example(collection_name, example, document, attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name, example: example, newValue: document})
-      |> JSON.encode
-
-    "replace-by-example"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name, example: example, newValue: document})
+#      |> JSON.encode
+#
+#    "replace-by-example"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 
   @doc """
@@ -408,12 +408,12 @@ defmodule Arangoex.Simple do
 
   """
   def update_documents_by_example(collection_name, example, document, attrs \\ [], opts \\ []) do
-    {:ok, body} = attrs
-      |> Enum.into(%{collection: collection_name, example: example, newValue: document})
-      |> JSON.encode
-
-    "update-by-example"
-      |> build_url(opts)
-      |> Arangoex.put(body, opts)
+#    {:ok, body} = attrs
+#      |> Enum.into(%{collection: collection_name, example: example, newValue: document})
+#      |> JSON.encode
+#
+#    "update-by-example"
+#      |> build_url(opts)
+#      |> Arangoex.put(body, opts)
   end
 end
