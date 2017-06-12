@@ -1,29 +1,19 @@
 defmodule Arangoex.ResponseTest do
   alias Arangoex.Response
-#  alias HTTPoison.Response, as: HTTPoisonResponse
 
   use ExUnit.Case, async: true
 
-#  test "Response struct" do
-#    response = %Response{}
-#    assert response.body == nil
-#    assert response.headers == []
-#    assert response.status_code == nil
-#  end
+  test "Response struct" do
+    response = %Response{}
+    assert response.body == nil
+    assert response.headers == nil
+    assert response.response_type == nil
+    assert response.status_code == nil
+    assert response.version == nil
+  end
 
-#  test "convert HTTPoison.Response" do
-#    response = %HTTPoisonResponse{body: "foo", headers: [{"foo", "bar"}], status_code: 123}
-#    converted = Response.convert_response(response)
-#    assert converted.body == "foo"
-#    assert converted.headers == [{"foo", "bar"}]
-#    assert converted.status_code == 123
-#  end
-
-#  test "convert HTTPoison.Response tuple" do
-#    response = %HTTPoisonResponse{body: "foo", headers: [{"foo", "bar"}], status_code: 123}
-#    {:ok, converted} = Response.convert_response({:ok, response})
-#    assert converted.body == "foo"
-#    assert converted.headers == [{"foo", "bar"}]
-#    assert converted.status_code == 123
-#  end
+  test "to_response() without headers" do
+    response = Response.to_response([1, 2, 200], %{"foo" => "bar"})
+    assert response == %Response{body: %{"foo" => "bar"}, headers: nil, response_type: 2, status_code: 200, version: 1}
+  end
 end

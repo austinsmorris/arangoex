@@ -1,17 +1,11 @@
 defmodule Arangoex.Response do
   @moduledoc false
 
-#  alias HTTPoison.Response, as: HTTPoisonResponse
+  defstruct body: nil, headers: nil, response_type: nil, status_code: nil, version: nil
 
-  defstruct body: nil, headers: [], status_code: nil
+  @type t :: %__MODULE__{body: any, headers: any, response_type: integer, status_code: integer, version: integer}
 
-  @type t :: %__MODULE__{status_code: integer, body: binary, headers: list}
-
-#  def convert_response(%HTTPoisonResponse{} = response) do
-#    %__MODULE__{body: response.body, headers: response.headers, status_code: response.status_code}
-#  end
-#
-#  def convert_response({:ok, %HTTPoisonResponse{} = response}) do
-#    {:ok, %__MODULE__{body: response.body, headers: response.headers, status_code: response.status_code}}
-#  end
+  def to_response([version, response_type, status_code] = _header, body) do
+    %__MODULE__{body: body, response_type: response_type, status_code: status_code, version: version}
+  end
 end
