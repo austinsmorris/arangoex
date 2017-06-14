@@ -12,8 +12,8 @@ defmodule Arangoex.ResponseTest do
     assert response.version == nil
   end
 
-  test "to_response() without headers" do
-    response = Response.to_response([1, 2, 200], %{"foo" => "bar"})
+  test "build_response() without headers" do
+    response = Response.build_response([1, 2, 200], %{"foo" => "bar"})
     assert response == %Response{body: %{"foo" => "bar"}, headers: nil, response_type: 2, status_code: 200, version: 1}
   end
 end
