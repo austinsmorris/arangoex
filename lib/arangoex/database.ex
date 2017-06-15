@@ -1,49 +1,116 @@
 defmodule Arangoex.Database do
-  @moduledoc false
+  @moduledoc """
+  This module contains functions used to manage databases.
+  """
 
-#  alias Arangoex.JSON
+  @doc """
+  Create a new database.
 
-#  use Arangoex, base_url: ["/", "_api", "/", "database"]
+  The `conn` parameter is an ArangoDB connection PID.  The `database` parameter is a map describing the database to be
+  created.
 
-  # POST /_api/database
-  # Create a new database.
-  def create(%{} = database, opts \\ []) do
-#    {:ok, body} = JSON.encode(database)
-#
-#    []
-#      |> build_url(Keyword.put_new(opts, :database, "_system"))
-#      |> Arangoex.post(body, opts)
+  ## Endpoint
+
+  POST /_api/database
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, conn} = Arangoex.start_link()
+      {:ok, resp} = Arangoex.Database.create(conn, %{name: "foo"})
+  """
+  def create(conn, %{} = database, opts \\ []) do
+    Arangoex.request(conn, :post, "/_api/database", %{}, %{}, database, opts)
   end
 
-  # GET /_api/database/current
-  # Return information about the current database.
-  def get_current(opts \\ []) do
-#    "current"
-#      |> build_url(opts)
-#      |> Arangoex.get(opts)
+  @doc """
+  Return information about the current database.
+
+  The `conn` parameter is an ArangoDB connection PID.
+
+  ## Endpoint
+
+  GET /_api/database/current
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, conn} = Arangoex.start_link()
+      {:ok, resp} = Arangoex.Database.current(conn)
+  """
+  def current(conn, opts \\ []) do
+    Arangoex.request(conn, :get, "/_api/database/current", %{}, %{}, nil, opts)
   end
 
-  # GET /_api/database
-  # Return a list of all databases on the system.
-  def list(opts \\ []) do
-#    []
-#      |> build_url(opts)
-#      |> Arangoex.get(opts)
+  @doc """
+  Return a list of databases on the system.
+
+  The `conn` parameter is an ArangoDB connection PID.
+
+  ## Endpoint
+
+  GET /_api/database
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, conn} = Arangoex.start_link()
+      {:ok, resp} = Arangoex.Database.list(conn)
+  """
+  def list(conn, opts \\ []) do
+    Arangoex.request(conn, :get, "/_api/database", %{}, %{}, nil, opts)
   end
 
-  # GET /_api/database/user
-  # Return a list of databases for the current user.
-  def list_for_current_user(opts \\ []) do
-#    "user"
-#      |> build_url(opts)
-#      |> Arangoex.get(opts)
+  @doc """
+  Return a list of databases on the system for the current user.
+
+  The `conn` parameter isan ArangoDB connection PID.
+
+  ## Endpoint
+
+  GET /_api/database/user
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, conn} = Arangoex.start_link()
+      {:ok, resp} = Arangoex.Database.list_for_current_user(conn)
+  """
+  def list_for_current_user(conn, opts \\ []) do
+    Arangoex.request(conn, :get, "/_api/database/user", %{}, %{}, nil, opts)
   end
 
-  # DELETE /_api/database/{database-name}
-  # Remove the database identified by database-name from the system.
-  def remove(database_name, opts \\ []) do
-#    database_name
-#      |> build_url(Keyword.put_new(opts, :database, "_system"))
-#      |> Arangoex.delete(opts)
+  @doc """
+  Remove the given database from the system.
+
+  The `conn` parameter is an ArangoDB connection PID.  The `database_name` parameter is the database to be removed.
+
+  ## Endpoint
+
+  DELETE /_api/database/{database_name}
+
+  ## Options
+
+  See the "Shared Options" in the `Arangoex` module documentation for additional options.
+
+  ## Examples
+
+      {:ok, conn} = Arangoex.start_link()
+      {:ok, resp} = Arangoex.Database.remove(conn, "foo")
+  """
+  def remove(conn, database_name, opts \\ []) do
+    Arangoex.request(conn, :delete, "/_api/database/#{database_name}", %{}, %{}, nil, opts)
   end
 end

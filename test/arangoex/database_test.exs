@@ -1,8 +1,9 @@
 defmodule Arangoex.DatabaseTest do
 #  alias Arangoex.Database
-#  alias Arangoex.JSON
 
   use ExUnit.Case, async: true
+
+  # todo - test Arangoex.Database for vst
 
 #  test "create() creates a new database" do
 #    {:ok, response} = Database.create(%{name: "foo"})
