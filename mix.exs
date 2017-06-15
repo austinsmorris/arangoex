@@ -4,8 +4,8 @@ defmodule Arangoex.Mixfile do
   def project do
     [
       app: :arangoex,
-      version: "0.0.10",
-      elixir: "~> 1.3",
+      version: "0.1.0",
+      elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       name: "Arangoex",
@@ -19,7 +19,8 @@ defmodule Arangoex.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:httpoison, :logger]]
+    # Specify extra applications you'll use from Erlang/Elixir
+    [extra_applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:
@@ -33,10 +34,11 @@ defmodule Arangoex.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:credo, "~> 0.4", only: [:dev, :test]},
-      {:ex_doc, "~> 0.14", only: :dev},
-      {:httpoison, "~> 0.11.0"},
-      {:poison, "~> 2.2 or ~> 3.0"},
+      {:connection, "~> 1.0"},
+      {:credo, "~> 0.8", only: [:dev, :test]},
+      {:ex_doc, "~> 0.16", only: :dev},
+      {:velocy_pack, "~> 0.0"},
+      {:velocy_stream, "~> 0.0"},
     ]
   end
 

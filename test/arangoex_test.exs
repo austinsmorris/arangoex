@@ -1,13 +1,11 @@
 defmodule ArangoexTest do
   use ExUnit.Case, async: true
 
-#  test "get_base_url for default database" do
-#    url = Arangoex.get_base_url()
-#    assert url == ["http://localhost:8529", "/", "_db", "/", "test"]
-#  end
+  test "start_link() connects to the database" do
+    {:ok, conn} = Arangoex.start_link()
+    assert is_pid(conn)
+  end
 
-#  test "get_base_url for given database" do
-#    url = Arangoex.get_base_url(database: "foo")
-#    assert url == ["http://localhost:8529", "/", "_db", "/", "foo"]
-#  end
+  # todo - test start_link() with opts
+  # todo - test request
 end
