@@ -12,13 +12,16 @@ defmodule Arangoex do
   end
 
   def start_link(opts \\ []) do
-    # todo - "with"" syntax?
-    {host, opts} = pop_host(opts)
-    {port, opts} = pop_port(opts)
-    {database, opts} = pop_database(opts)
-    {username, opts} = pop_username(opts)
-    {password, opts} = pop_password(opts)
-    AConnection.start_link([host: host, port: port, database: database, username: username, password: password], opts)
+    with {host, opts} <- pop_host(opts),
+      {port, opts} <- pop_port(opts),
+      {database, opts} <- pop_database(opts),
+      {username, opts} <- pop_username(opts),
+      {password, opts} <- pop_password(opts)
+    do
+      AConnection.start_link([host: host, port: port, database: database, username: username, password: password], opts)
+    else
+      error -> {:error, error}
+    end
   end
 
   defp pop_database(opts) do
