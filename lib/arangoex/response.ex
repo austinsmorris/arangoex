@@ -1,5 +1,7 @@
 defmodule Arangoex.Response do
-  @moduledoc false
+  @moduledoc """
+  Response struct and supporting functions for ArangoDB reponses.
+  """
 
   defstruct body: nil, headers: nil, response_type: nil, status_code: nil, version: nil
 
