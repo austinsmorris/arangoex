@@ -1,5 +1,9 @@
 defmodule Arangoex.SimpleTest do
+  alias Arangoex.Simple
+
   use ExUnit.Case, async: false
+
+  # todo Simple tests
 
 #  alias Arangoex.{
 #    Collection,
@@ -8,12 +12,12 @@ defmodule Arangoex.SimpleTest do
 #    Simple
 #  }
 
-  @collection_name "cars"
-
-  @document1 %{brand: "Ford", model: "Festiva"}
-  @document2 %{brand: "Toyota", model: "Camry"}
-
-  @example %{brand: "Ford"}
+#  @collection_name "cars"
+#
+#  @document1 %{brand: "Ford", model: "Festiva"}
+#  @document2 %{brand: "Toyota", model: "Camry"}
+#
+#  @example %{brand: "Ford"}
 
   setup do
 #    Collection.create(%{name: @collection_name})
@@ -49,8 +53,8 @@ defmodule Arangoex.SimpleTest do
 #    assert Map.has_key?(doc, "model")
 #  end
 
-  @example_brands ["Ford", "Toyota"]
-  @example_models ["Festiva", "Camry"]
+#  @example_brands ["Ford", "Toyota"]
+#  @example_models ["Festiva", "Camry"]
 #  test "list_documents() gets all documents in a collection" do
 #    {:ok, response} = Simple.list_documents(@collection_name)
 #
@@ -114,8 +118,8 @@ defmodule Arangoex.SimpleTest do
 #    assert [] == JSON.decode!(response.body) |> get_in(["result"])
 #  end
 
-  @replaced_brands ["Chevrolet", "Toyota"]
-  @replaced_models ["Camaro", "Camry"]
+#  @replaced_brands ["Chevrolet", "Toyota"]
+#  @replaced_models ["Camaro", "Camry"]
 #  test "replace_documents_by_example() replaces all documents matched by example by another document" do
 #    replacement = %{brand: "Chevrolet", model: "Camaro"}
 #
@@ -133,8 +137,8 @@ defmodule Arangoex.SimpleTest do
 #    assert Enum.member?(@replaced_models, get_in(document2, ["model"]))
 #  end
 
-  @modified_brands ["Ford", "Toyota"]
-  @modified_models ["Ranger", "Camry"]
+#  @modified_brands ["Ford", "Toyota"]
+#  @modified_models ["Ranger", "Camry"]
 #  test "update_documents_by_example() updates all documents matched by example with another document" do
 #    modification = %{model: "Ranger"}
 #

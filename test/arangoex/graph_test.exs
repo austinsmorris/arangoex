@@ -1,8 +1,10 @@
 defmodule Arangoex.GraphTest do
-#  alias Arangoex.Graph
+  alias Arangoex.Graph
 #  alias Arangoex.JSON
 
   use ExUnit.Case, async: true
+
+  # todo - graph tests
 
 #  test "add_edges()" do
 #
