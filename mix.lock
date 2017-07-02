@@ -2,6 +2,6 @@
   "connection": {:hex, :connection, "1.0.4", "a1cae72211f0eef17705aaededacac3eb30e6625b04a6117c1b2db6ace7d5976", [:mix], []},
   "credo": {:hex, :credo, "0.8.1", "137efcc99b4bc507c958ba9b5dff70149e971250813cbe7d4537ec7e36997402", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, optional: false]}]},
   "earmark": {:hex, :earmark, "1.2.2", "f718159d6b65068e8daeef709ccddae5f7fdc770707d82e7d126f584cd925b74", [:mix], []},
-  "ex_doc": {:hex, :ex_doc, "0.16.1", "b4b8a23602b4ce0e9a5a960a81260d1f7b29635b9652c67e95b0c2f7ccee5e81", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, optional: false]}]},
-  "velocy_pack": {:hex, :velocy_pack, "0.0.4", "c760f7c8e614004004748cd5e37235a15ba761a24514980d831e5c3a78b98608", [:mix], []},
+  "ex_doc": {:hex, :ex_doc, "0.16.2", "3b3e210ebcd85a7c76b4e73f85c5640c011d2a0b2f06dcdf5acdb2ae904e5084", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, optional: false]}]},
+  "velocy_pack": {:hex, :velocy_pack, "0.0.5", "40016926678efe2b79f4d5ce512baeb67d095c8b1b01be951046b89a2ca2edb4", [:mix], []},
   "velocy_stream": {:hex, :velocy_stream, "0.0.1", "38fce629d1d47de54c799940546bf3d84d544a140f26c79f7a5cec2474705f58", [:mix], []}}
