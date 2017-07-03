@@ -1,70 +1,76 @@
 defmodule Arangoex.DatabaseTest do
-#  alias Arangoex.Database
+  alias Arangoex.Database
 
   use ExUnit.Case, async: true
 
-  # todo - test Arangoex.Database for vst
+  setup do
+    # make sure "foo" database does not exist for tests
+    Database.remove(:arango, "foo", database: "_system")
 
-#  test "create() creates a new database" do
-#    {:ok, response} = Database.create(%{name: "foo"})
-#    body = JSON.decode!(response.body, keys: :atoms)
-#
-#    assert body.code == 201
-#    assert body.error === false
-#    assert body.result === true
-#
-#    {:ok, response} =Database.list()
-#    body = JSON.decode!(response.body, keys: :atoms)
-#
-#    assert Enum.member?(body.result, "foo")
-#  end
+    on_exit fn ->
+      # make sure "foo" database is removed from any test
+      Database.remove(:arango, "foo", database: "_system")
+    end
+  end
 
-#  test "get_current() returns info about current database" do
-#    {:ok, response} = Database.get_current()
-#    body = JSON.decode!(response.body, keys: :atoms)
-#
-#    assert body.code == 200
-#    assert body.error === false
-#    assert is_binary(body.result.id)
-#    assert body.result.isSystem === false
-#    assert body.result.name === "test"
-#    assert is_binary(body.result.path)
-#  end
+  test "create() creates a new database." do
+    {:ok, resp} = Database.create(:arango, %{name: "foo"}, database: "_system")
 
-#  test "list()" do
-#    {:ok, response} = Database.list()
-#    body = JSON.decode!(response.body, keys: :atoms)
-#
-#    assert body.code == 200
-#    assert body.error === false
-#    assert is_list(body.result)
-#    assert Enum.member?(body.result, "test")
-#    assert Enum.member?(body.result, "_system")
-#  end
+    assert resp.status_code == 201
+    assert resp.body["code"] == 201
+    assert resp.body["error"] === false
+    assert resp.body["result"] === true
 
-#  test "list_for_current_user()" do
-#    # todo - create the databse for a different user
-#    Database.create(%{name: "foo"})
-#
-#    # todo - list databases for that different user
-#    {:ok, response} = Database.list_for_current_user()
-#    body = JSON.decode!(response.body, keys: :atoms)
-#    IO.inspect body
-#
-#    Database.remove("foo")
-#  end
+    {:ok, resp} =Database.list(:arango)
 
-#  test "remove() deletes the given database" do
-#    Database.create(%{name: "foo"})
-#    {:ok, response} = Database.remove("foo")
-#    body = JSON.decode!(response.body, keys: :atoms)
-#    assert body.code == 200
-#    assert body.result === true
-#    assert body.error === false
-#
-#    {:ok, response} =Database.list()
-#    body = JSON.decode!(response.body, keys: :atoms)
-#
-#    refute Enum.member?(body.result, "foo")
-#  end
+    assert Enum.member?(resp.body["result"], "foo")
+  end
+
+  test "current() returns info about current database." do
+    {:ok, resp} = Database.current(:arango)
+
+    assert resp.status_code == 200
+    assert resp.body["code"] == 200
+    assert resp.body["error"] === false
+    assert is_binary(resp.body["result"]["id"])
+    assert resp.body["result"]["isSystem"] === false
+    assert resp.body["result"]["name"] === "test"
+    assert is_binary(resp.body["result"]["path"])
+  end
+
+  test "list() returns information about databases in the system." do
+    {:ok, resp} = Database.list(:arango)
+
+    assert resp.status_code == 200
+    assert resp.body["code"] == 200
+    assert resp.body["error"] === false
+    assert is_list(resp.body["result"])
+    assert Enum.member?(resp.body["result"], "test")
+    assert Enum.member?(resp.body["result"], "_system")
+  end
+
+  test "list_for_current_user() returns information about databases for the current user." do
+    {:ok, resp} = Database.list_for_current_user(:arango)
+
+    assert resp.status_code == 200
+    assert resp.body["code"] == 200
+    assert resp.body["error"] === false
+    assert is_list(resp.body["result"])
+    assert Enum.member?(resp.body["result"], "test")
+    assert Enum.member?(resp.body["result"], "_system")
+  end
+
+  test "remove() deletes the given database." do
+    Database.create(:arango, %{name: "foo"}, database: "_system")
+    {:ok, resp} = Database.remove(:arango, "foo", database: "_system")
+
+    assert resp.status_code == 200
+    assert resp.body["code"] == 200
+    assert resp.body["result"] === true
+    assert resp.body["error"] === false
+
+    {:ok, resp} =Database.list(:arango)
+
+    refute Enum.member?(resp.body["result"], "foo")
+  end
 end

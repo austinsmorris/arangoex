@@ -73,7 +73,7 @@ defmodule Arangoex.Database do
   @doc """
   Return a list of databases on the system for the current user.
 
-  The `conn` parameter isan ArangoDB connection PID.
+  The `conn` parameter is an ArangoDB connection PID.
 
   ## Endpoint
 
