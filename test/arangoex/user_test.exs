@@ -20,11 +20,10 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 201
     assert resp.body["error"] === false
     assert resp.body["active"] === true
-    assert resp.body["changePassword"] === false
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
 
-    foo = %{"active" => true, "changePassword" => false, "extra" => %{}, "user" => "foo"}
+    foo = %{"active" => true, "extra" => %{}, "user" => "foo"}
     {:ok, resp} = User.list(:arango)
 
     assert Enum.member?(resp.body["result"], foo)
@@ -49,7 +48,6 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 200
     assert resp.body["error"] === false
     assert resp.body["active"] === true
-    assert resp.body["changePassword"] === false
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
   end
@@ -73,7 +71,7 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 200
     assert resp.body["error"] === false
 
-    foo = %{"active" => true, "changePassword" => false, "extra" => %{}, "user" => "foo"}
+    foo = %{"active" => true, "extra" => %{}, "user" => "foo"}
     assert Enum.member?(resp.body["result"], foo)
   end
 
@@ -87,7 +85,7 @@ defmodule Arangoex.UserTest do
 
     {:ok, resp} = User.list(:arango)
 
-    foo = %{"active" => true, "changePassword" => false, "extra" => %{}, "user" => "foo"}
+    foo = %{"active" => true, "extra" => %{}, "user" => "foo"}
     refute Enum.member?(resp.body["result"], foo)
   end
 
@@ -99,13 +97,12 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 200
     assert resp.body["error"] === false
     assert resp.body["active"] === false
-    assert resp.body["changePassword"] === false
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
 
     {:ok, resp} = User.list(:arango)
 
-    foo = %{"active" => false, "changePassword" => false, "extra" => %{}, "user" => "foo"}
+    foo = %{"active" => false, "extra" => %{}, "user" => "foo"}
     assert Enum.member?(resp.body["result"], foo)
   end
 
@@ -125,7 +122,7 @@ defmodule Arangoex.UserTest do
     assert resp.status_code === 200
     assert resp.body["code"] === 200
     assert resp.body["error"] === false
-    assert resp.body["result"] === %{"test" => "none"}
+    assert resp.body["result"] === %{}
   end
 
   test "update() updates the properties of a user." do
@@ -136,13 +133,12 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 200
     assert resp.body["error"] === false
     assert resp.body["active"] === false
-    assert resp.body["changePassword"] === false
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
 
     {:ok, resp} = User.list(:arango)
 
-    foo = %{"active" => false, "changePassword" => false, "extra" => %{}, "user" => "foo"}
+    foo = %{"active" => false, "extra" => %{}, "user" => "foo"}
     assert Enum.member?(resp.body["result"], foo)
   end
 end
