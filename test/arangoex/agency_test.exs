@@ -1,5 +1,5 @@
 defmodule Arangoex.AgencyTest do
-  alias Arangoex.Agency
+#  alias Arangoex.Agency
 
   use ExUnit.Case, async: true
 

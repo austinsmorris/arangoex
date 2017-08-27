@@ -1,5 +1,5 @@
 defmodule Arangoex.SimpleTest do
-  alias Arangoex.Simple
+#  alias Arangoex.Simple
 
   use ExUnit.Case, async: false
 

@@ -1,5 +1,5 @@
 defmodule Arangoex.AdminTest do
-  alias Arangoex.Admin
+#  alias Arangoex.Admin
 
   use ExUnit.Case, async: true
 

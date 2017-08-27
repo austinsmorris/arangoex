@@ -1,5 +1,5 @@
 defmodule Arangoex.AQLTest do
-  alias Arangoex.AQL
+#  alias Arangoex.AQL
 
   use ExUnit.Case, async: true
 

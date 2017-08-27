@@ -1,5 +1,5 @@
 defmodule Arangoex.DocumentTest do
-  alias Arangoex.Document
+#  alias Arangoex.Document
 
   use ExUnit.Case, async: true
 

@@ -1,5 +1,5 @@
 defmodule Arangoex.BulkTest do
-  alias Arangoex.Bulk
+#  alias Arangoex.Bulk
 
   use ExUnit.Case, async: true
 

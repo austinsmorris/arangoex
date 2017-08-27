@@ -1,5 +1,5 @@
 defmodule Arangoex.JobTest do
-  alias Arangoex.Job
+#  alias Arangoex.Job
 
   use ExUnit.Case, async: true
 

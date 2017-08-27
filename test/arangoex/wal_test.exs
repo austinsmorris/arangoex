@@ -1,5 +1,5 @@
 defmodule Arangoex.WALTest do
-  alias Arangoex.WAL
+#  alias Arangoex.WAL
 
   use ExUnit.Case, async: true
 

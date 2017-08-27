@@ -1,5 +1,5 @@
 defmodule Arangoex.TransactionTest do
-  alias Arangoex.Transaction
+#  alias Arangoex.Transaction
 
   use ExUnit.Case, async: true
 

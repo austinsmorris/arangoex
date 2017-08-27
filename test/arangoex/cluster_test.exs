@@ -1,5 +1,5 @@
 defmodule Arangoex.ClusterTest do
-  alias Arangoex.Cluster
+#  alias Arangoex.Cluster
 
   use ExUnit.Case, async: true
 

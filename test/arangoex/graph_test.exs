@@ -1,5 +1,5 @@
 defmodule Arangoex.GraphTest do
-  alias Arangoex.Graph
+#  alias Arangoex.Graph
 #  alias Arangoex.JSON
 
   use ExUnit.Case, async: true

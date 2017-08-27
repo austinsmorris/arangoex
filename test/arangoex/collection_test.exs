@@ -1,5 +1,5 @@
 defmodule Arangoex.CollectionTest do
-  alias Arangoex.Collection
+#  alias Arangoex.Collection
 
   use ExUnit.Case, async: true
 

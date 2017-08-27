@@ -1,5 +1,5 @@
 defmodule Arangoex.Graph.EdgesTest do
-  alias Arangoex.Graph.Edges
+#  alias Arangoex.Graph.Edges
 
   use ExUnit.Case, async: true
 
