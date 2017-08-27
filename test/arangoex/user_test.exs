@@ -2,7 +2,6 @@ defmodule Arangoex.UserTest do
   alias Arangoex.User
 
   use ExUnit.Case, async: false
-
   setup do
     # make sure "foo" user does not exist for tests
     User.remove(:arango, "foo")

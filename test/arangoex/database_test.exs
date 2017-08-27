@@ -1,7 +1,7 @@
 defmodule Arangoex.DatabaseTest do
   alias Arangoex.Database
 
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   setup do
     # make sure "foo" database does not exist for tests
@@ -21,7 +21,7 @@ defmodule Arangoex.DatabaseTest do
     assert resp.body["error"] === false
     assert resp.body["result"] === true
 
-    {:ok, resp} =Database.list(:arango)
+    {:ok, resp} = Database.list(:arango)
 
     assert Enum.member?(resp.body["result"], "foo")
   end
@@ -69,7 +69,7 @@ defmodule Arangoex.DatabaseTest do
     assert resp.body["result"] === true
     assert resp.body["error"] === false
 
-    {:ok, resp} =Database.list(:arango)
+    {:ok, resp} = Database.list(:arango)
 
     refute Enum.member?(resp.body["result"], "foo")
   end
