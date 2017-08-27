@@ -21,8 +21,8 @@
         # You can give explicit globs or simply directories.
         # In the latter case `**/*.{ex,exs}` will be used.
         #
-        included: ["lib/", "src/", "web/", "apps/"],
-        excluded: [~r"/_build/", ~r"/deps/"]
+        included: ["config/", "lib/", "test/"],
+        excluded: [~r"/_build/", ~r"/deps/", ~r"/docs/", ~r"/tmp/"]
       },
       #
       # If you create your own checks, you must specify the source files for
@@ -72,7 +72,9 @@
         # If you don't want TODO comments to cause `mix credo` to fail, just
         # set this value to 0 (zero).
         #
-        {Credo.Check.Design.TagTODO, exit_status: 0},
+        # todo - check for todos
+#        {Credo.Check.Design.TagTODO, exit_status: 0},
+        {Credo.Check.Design.TagTODO, false},
         {Credo.Check.Design.TagFIXME},
 
         {Credo.Check.Readability.FunctionNames},

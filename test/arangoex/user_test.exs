@@ -32,7 +32,7 @@ defmodule Arangoex.UserTest do
   test "database() shows information about databases a user has access to." do
     User.create(:arango, %{user: "foo"})
     User.grant(:arango, "foo", "test")
-    {:ok, resp} = Arangoex.User.database(:arango, "foo")
+    {:ok, resp} = User.database(:arango, "foo")
 
     assert resp.status_code === 200
     assert resp.body["code"] === 200
@@ -55,7 +55,7 @@ defmodule Arangoex.UserTest do
   test "grant() grants database access to a user." do
     User.create(:arango, %{user: "foo"})
     User.grant(:arango, "foo", "test")
-    {:ok, resp} = Arangoex.User.database(:arango, "foo")
+    {:ok, resp} = User.database(:arango, "foo")
 
     assert resp.status_code === 200
     assert resp.body["code"] === 200
@@ -109,7 +109,7 @@ defmodule Arangoex.UserTest do
   test "revoke() revokes database access from a user." do
     User.create(:arango, %{user: "foo"})
     User.grant(:arango, "foo", "test")
-    {:ok, resp} = Arangoex.User.database(:arango, "foo")
+    {:ok, resp} = User.database(:arango, "foo")
 
     assert resp.status_code === 200
     assert resp.body["code"] === 200
@@ -117,7 +117,7 @@ defmodule Arangoex.UserTest do
     assert resp.body["result"] === %{"test" => "rw"}
 
     User.revoke(:arango, "foo", "test")
-    {:ok, resp} = Arangoex.User.database(:arango, "foo")
+    {:ok, resp} = User.database(:arango, "foo")
 
     assert resp.status_code === 200
     assert resp.body["code"] === 200
