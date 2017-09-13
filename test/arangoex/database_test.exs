@@ -21,9 +21,9 @@ defmodule Arangoex.DatabaseTest do
     assert resp.body["error"] === false
     assert resp.body["result"] === true
 
-    {:ok, resp} = Database.list(:arango)
+    {:ok, list_resp} = Database.list(:arango)
 
-    assert Enum.member?(resp.body["result"], "foo")
+    assert Enum.member?(list_resp.body["result"], "foo")
   end
 
   test "current() returns info about current database." do
@@ -69,8 +69,8 @@ defmodule Arangoex.DatabaseTest do
     assert resp.body["result"] === true
     assert resp.body["error"] === false
 
-    {:ok, resp} = Database.list(:arango)
+    {:ok, list_resp} = Database.list(:arango)
 
-    refute Enum.member?(resp.body["result"], "foo")
+    refute Enum.member?(list_resp.body["result"], "foo")
   end
 end

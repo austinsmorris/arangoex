@@ -32,9 +32,9 @@ defmodule Arangoex.CollectionTest do
     assert resp.body["waitForSync"] === false
 
     foo = %{"id" => resp.body["id"], "isSystem" => false, "name" => "foo", "status" => 3, "type" => 2}
-    {:ok, resp} = Collection.list(:arango)
+    {:ok, list_resp} = Collection.list(:arango)
 
-    assert Enum.member?(resp.body["result"], foo)
+    assert Enum.member?(list_resp.body["result"], foo)
   end
 
   test "get() returns information about a collection" do
@@ -124,9 +124,9 @@ defmodule Arangoex.CollectionTest do
     assert is_binary(resp.body["id"])
 
     foo = %{"id" => resp.body["id"], "isSystem" => false, "name" => "foo", "status" => 3, "type" => 2}
-    {:ok, resp} = Collection.list(:arango)
+    {:ok, list_resp} = Collection.list(:arango)
 
-    refute Enum.member?(resp.body["result"], foo)
+    refute Enum.member?(list_resp.body["result"], foo)
   end
 
   test "revision() returns the revision of the collection." do

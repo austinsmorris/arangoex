@@ -292,7 +292,7 @@ defmodule Arangoex.GraphTest do
     assert is_binary(resp.body["edge"]["_rev"])
     assert is_binary(resp.body["edge"]["_oldRev"])
 
-    edge =
+    replaced_edge =
       resp.body["edge"]
       |> Map.delete("_oldRev")
       |> Map.put("other_key", "other_value")
@@ -300,7 +300,7 @@ defmodule Arangoex.GraphTest do
       |> Map.put("_to", id2)
     {:ok, edge_response} = Graph.get_edge(:arango, "foo", edge_id)
 
-    assert edge_response.body["edge"] === edge
+    assert edge_response.body["edge"] === replaced_edge
 
     remove_standard_graph()
   end
@@ -366,7 +366,7 @@ defmodule Arangoex.GraphTest do
     assert is_binary(resp.body["edge"]["_rev"])
     assert is_binary(resp.body["edge"]["_oldRev"])
 
-    edge =
+    updated_edge =
       resp.body["edge"]
       |> Map.delete("_oldRev")
       |> Map.put("my_key", "my_value")
@@ -375,7 +375,7 @@ defmodule Arangoex.GraphTest do
       |> Map.put("_to", id2)
     {:ok, edge_response} = Graph.get_edge(:arango, "foo", edge_id)
 
-    assert edge_response.body["edge"] === edge
+    assert edge_response.body["edge"] === updated_edge
 
     remove_standard_graph()
   end

@@ -23,9 +23,9 @@ defmodule Arangoex.UserTest do
     assert resp.body["user"] === "foo"
 
     foo = %{"active" => true, "extra" => %{}, "user" => "foo"}
-    {:ok, resp} = User.list(:arango)
+    {:ok, list_resp} = User.list(:arango)
 
-    assert Enum.member?(resp.body["result"], foo)
+    assert Enum.member?(list_resp.body["result"], foo)
   end
 
   test "database() shows information about databases a user has access to." do
@@ -82,10 +82,10 @@ defmodule Arangoex.UserTest do
     assert resp.body["code"] === 202
     assert resp.body["error"] === false
 
-    {:ok, resp} = User.list(:arango)
+    {:ok, list_resp} = User.list(:arango)
 
     foo = %{"active" => true, "extra" => %{}, "user" => "foo"}
-    refute Enum.member?(resp.body["result"], foo)
+    refute Enum.member?(list_resp.body["result"], foo)
   end
 
   test "replace() replaces the properties of a user." do
@@ -99,10 +99,10 @@ defmodule Arangoex.UserTest do
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
 
-    {:ok, resp} = User.list(:arango)
+    {:ok, list_resp} = User.list(:arango)
 
     foo = %{"active" => false, "extra" => %{}, "user" => "foo"}
-    assert Enum.member?(resp.body["result"], foo)
+    assert Enum.member?(list_resp.body["result"], foo)
   end
 
   test "revoke() revokes database access from a user." do
@@ -116,12 +116,12 @@ defmodule Arangoex.UserTest do
     assert resp.body["result"] === %{"test" => "rw"}
 
     User.revoke(:arango, "foo", "test")
-    {:ok, resp} = User.database(:arango, "foo")
+    {:ok, db_resp} = User.database(:arango, "foo")
 
-    assert resp.status_code === 200
-    assert resp.body["code"] === 200
-    assert resp.body["error"] === false
-    assert resp.body["result"] === %{}
+    assert db_resp.status_code === 200
+    assert db_resp.body["code"] === 200
+    assert db_resp.body["error"] === false
+    assert db_resp.body["result"] === %{}
   end
 
   test "update() updates the properties of a user." do
@@ -135,9 +135,9 @@ defmodule Arangoex.UserTest do
     assert resp.body["extra"] === %{}
     assert resp.body["user"] === "foo"
 
-    {:ok, resp} = User.list(:arango)
+    {:ok, list_resp} = User.list(:arango)
 
     foo = %{"active" => false, "extra" => %{}, "user" => "foo"}
-    assert Enum.member?(resp.body["result"], foo)
+    assert Enum.member?(list_resp.body["result"], foo)
   end
 end
