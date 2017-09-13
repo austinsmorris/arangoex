@@ -3,5 +3,5 @@
   "credo": {:hex, :credo, "0.8.6", "335f723772d35da499b5ebfdaf6b426bfb73590b6fcbc8908d476b75f8cbca3f", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm"},
   "earmark": {:hex, :earmark, "1.2.2", "f718159d6b65068e8daeef709ccddae5f7fdc770707d82e7d126f584cd925b74", [:mix], []},
   "ex_doc": {:hex, :ex_doc, "0.16.2", "3b3e210ebcd85a7c76b4e73f85c5640c011d2a0b2f06dcdf5acdb2ae904e5084", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, optional: false]}]},
-  "velocy_pack": {:hex, :velocy_pack, "0.0.5", "40016926678efe2b79f4d5ce512baeb67d095c8b1b01be951046b89a2ca2edb4", [:mix], []},
+  "velocy_pack": {:hex, :velocy_pack, "0.0.6", "a088a86c392388c6b61aa3b95f990f0aad8d2a8547756ee25576e3d25d15e75c", [:mix], [], "hexpm"},
   "velocy_stream": {:hex, :velocy_stream, "0.0.1", "38fce629d1d47de54c799940546bf3d84d544a140f26c79f7a5cec2474705f58", [:mix], []}}
