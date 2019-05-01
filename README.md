@@ -10,29 +10,29 @@ The package can be installed from [Hex](https://hex.pm/packages/arangoex):
 
   1. Add `arangoex` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:arangoex, "~> 0.0.1"}]
-    end
-    ```
+```elixir
+  def deps do
+    [{:arangoex, "~> 0.0.1"}]
+  end
+```
 
   2. Configure `arangoex` for your specific environment:
 
-    ```elixir
-    config :arangoex,
-      host: "http://localhost:8529",
-      database: "myDatabase",
-      username: "myUsername",
-      password: "myPassword"
-    ```
+  ```elixir
+  config :arangoex,
+    host: "http://localhost:8529",
+    database: "myDatabase",
+    username: "myUsername",
+    password: "myPassword"
+  ```
 
   3. Ensure `arangoex` is started before your application:
 
-    ```elixir
-    def application do
-      [applications: [:arangoex]]
-    end
-    ```
+  ```elixir
+  def application do
+    [applications: [:arangoex]]
+  end
+  ```
 
 ## Running Tests
 
