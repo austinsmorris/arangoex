@@ -37,7 +37,7 @@ defmodule Arangoex.Mixfile do
       {:connection, "~> 1.0"},
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:ex_doc, "~> 0.16", only: :dev},
-      {:velocy_pack, "~> 0.0"},
+      {:velocy_pack, "~> 0.1"},
       {:velocy_stream, "~> 0.0"},
     ]
   end
