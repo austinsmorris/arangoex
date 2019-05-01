@@ -19,8 +19,5 @@ erl_crash.dump
 Ignore the dev config
 /config/dev.exs
 
-# Ignore the JetBrains directory
-/.idea
-
 # Ignore the tmp directory
 /tmp
