@@ -27,6 +27,7 @@ defmodule Arangoex.Connection do
   end
 
   def connect(info, state) do
+    # todo - make sure host is valid for :gen_tcp
     host = Keyword.get(info, :host)
     port = Keyword.get(info, :port)
     username = Keyword.get(info, :username)
@@ -78,7 +79,7 @@ defmodule Arangoex.Connection do
     # todo - error handling
     {message, 0} = VelocyStream.unpack(data)
     {:ok, header, tail} = VelocyPack.decode(message)
-    {:ok, body, ""} = parse_body(tail)
+    {:ok, body} = parse_body(tail)
 
     # todo - verify same version
     # todo - response type 2 or 3?

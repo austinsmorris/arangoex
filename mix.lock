@@ -8,6 +8,6 @@
   "makeup": {:hex, :makeup, "0.8.0", "9cf32aea71c7fe0a4b2e9246c2c4978f9070257e5c9ce6d4a28ec450a839b55f", [:mix], [{:nimble_parsec, "~> 0.5.0", [hex: :nimble_parsec, repo: "hexpm", optional: false]}], "hexpm"},
   "makeup_elixir": {:hex, :makeup_elixir, "0.13.0", "be7a477997dcac2e48a9d695ec730b2d22418292675c75aa2d34ba0909dcdeda", [:mix], [{:makeup, "~> 0.8", [hex: :makeup, repo: "hexpm", optional: false]}], "hexpm"},
   "nimble_parsec": {:hex, :nimble_parsec, "0.5.0", "90e2eca3d0266e5c53f8fbe0079694740b9c91b6747f2b7e3c5d21966bba8300", [:mix], [], "hexpm"},
-  "velocy_pack": {:hex, :velocy_pack, "0.1.2", "ea1a929e1f69c096e1d91f8565b8a7505ee84492e574ef60577f6a26cb185f38", [:mix], [], "hexpm"},
+  "velocy_pack": {:hex, :velocy_pack, "0.1.3", "3df81c3040acc40ce811e8ad929ae3d4d776926bb3d450f0079d09153cc87b6f", [:mix], [], "hexpm"},
   "velocy_stream": {:hex, :velocy_stream, "0.0.1", "38fce629d1d47de54c799940546bf3d84d544a140f26c79f7a5cec2474705f58", [:mix], [], "hexpm"},
 }
