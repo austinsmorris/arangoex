@@ -35,7 +35,7 @@ defmodule Arangoex.Mixfile do
   defp deps do
     [
       {:connection, "~> 1.0"},
-      {:credo, "~> 0.8", only: [:dev, :test]},
+      {:credo, "~> 1.6", only: [:dev, :test]},
       {:ex_doc, "~> 0.16", only: :dev},
       {:velocy_pack, "~> 0.1"},
       {:velocy_stream, "~> 0.0"},
